@@ -1,0 +1,20 @@
+{
+	"name": "extract-grades",
+	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
+	"containerEnv": {
+		"SHELL": "/bin/zsh"
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "3.13"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"github.copilot"
+			]
+		}
+	},
+	"remoteUser": "vscode"
+}
