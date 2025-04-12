@@ -57,13 +57,15 @@ def main():
     Main function to extract grades from all PDF files in the input folder
     and write the results to a CSV file.
     """
-    grades = {"Mathematics": [], "Language": []}
+    data = {"Mathematics": [], "Language": []}
     grade_headings = ["A", "B", "C", "D", "R", "I"]
 
     for filename in os.listdir(input_folder):
         if filename.endswith(".pdf"):
             pdf_path = os.path.join(input_folder, filename)
             grades = extract_grades_from_pdf(pdf_path)
+            data["Language"].extend(grades["Language"])
+            data["Mathematics"].extend(grades["Mathematics"])
 
     # Initialize counts for all grades to 0 per subject
     subject_grade_counts = {
@@ -72,13 +74,13 @@ def main():
     }
 
     # Calculate total counts for each grade per subject (ignoring suffixes)
-    for subject, grade_list in grades.items():
+    for subject, grade_list in data.items():
         for grade in grade_list:
             base_grade = grade[0]
             if base_grade in subject_grade_counts[subject]:
                 subject_grade_counts[subject][base_grade] += 1
 
-    print(f"Extracted grades, writing to {output_csv}...\n{grades}")
+    print(f"Extracted grades, writing to {output_csv}...")
 
     # Write the extracted grades and totals to a CSV file
     with open(output_csv, mode="w", newline="") as file:

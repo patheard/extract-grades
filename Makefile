@@ -1,5 +1,4 @@
 init:
-	mkdir -p data/input
 	mkdir -p data/output
 
 install:

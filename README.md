@@ -1,5 +1,5 @@
 # Extract grades
-Extracts grades from `.pdf` files.  Saves the results to a `.csv`.
+Extracts grades from the `data/intput/*.pdf` files.  Saves the results to `data/output/grades.csv`.
 
 ## Run
 ```bash
